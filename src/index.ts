@@ -1,3 +1,3 @@
 import {someFn} from "./text";
 
-someFn();
+someFn(1);
