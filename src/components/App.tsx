@@ -1,15 +1,12 @@
-import React, {Suspense, useContext, useState} from 'react';
+import React, {Suspense} from 'react';
 import '../styles/index.scss'
 import {Link, Route, Routes} from "react-router-dom";
 import {AboutPageAsync} from "../Pages/AboutPage/AboutPage.async";
 import {MainPageAsync} from "../Pages/MainPage/MainPage.async";
-import {Theme, ThemeContext} from "../theme/ThemeContext";
+import {useTheme} from "../theme/useTheme";
 
 const App = () => {
-    const {theme, setTheme} = useContext(ThemeContext);
-    function toggleTheme() {
-        setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
-    }
+    const {theme, toggleTheme} = useTheme();
     return (
         <div className={`app ${theme}`}>
             <Link to='/'>Главная</Link>
