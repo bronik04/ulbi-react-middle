@@ -8,8 +8,10 @@ interface NavbarProps {
 }
 
 export const Navbar = ({className}: NavbarProps) => (
-    <nav className={classNames(cls.navbar, {}, [className])}>
-        <Link to='/'>Главная</Link>
-        <Link to='/about'>О нас</Link>
-    </nav>
+    <header className={classNames(cls.Navbar, {}, [className])}>
+        <nav className={cls.links}>
+            <Link to='/'>Главная</Link>
+            <Link to='/about'>О нас</Link>
+        </nav>
+    </header>
 );
