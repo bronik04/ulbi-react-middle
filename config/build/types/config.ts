@@ -5,14 +5,14 @@ export interface BuildPaths {
     html: string,
     src: string,
 }
- export interface BuildOptions {
+export interface BuildOptions {
      mode: BuildMode,
      paths: BuildPaths,
      isDev: boolean,
      port: number,
  }
 
- export interface BuildEnv {
+export interface BuildEnv {
      mode: BuildMode,
      port: number,
  }
