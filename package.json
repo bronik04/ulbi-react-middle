@@ -10,7 +10,8 @@
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.css\"",
-    "lint:scss:fix": "npx stylelint \"**/*.css\" --fix"
+    "lint:scss:fix": "npx stylelint \"**/*.css\" --fix",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +39,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.5.3",
     "postcss-scss": "^4.0.6",
     "react-scripts": "^5.0.1",
