@@ -1,5 +1,6 @@
-import React, { ErrorInfo, ReactNode } from 'react';
+import React, { ErrorInfo, ReactNode, Suspense } from 'react';
 import { withTranslation } from 'react-i18next';
+import { PageError } from 'widgets/PageError/ui/PageError';
 
 interface ErrorBoundaryProps {
     children: ReactNode;
@@ -31,7 +32,11 @@ class ErrorBoundary
         const { children } = this.props;
         if (hasError) {
             // Можно отрендерить запасной UI произвольного вида
-            return <h1>Что-то пошло не так.</h1>;
+            return (
+                <Suspense fallback="">
+                    <PageError />
+                </Suspense>
+            );
         }
 
         return children;
