@@ -38,6 +38,7 @@ export default {
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
     rootDir: '../../',
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
