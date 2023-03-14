@@ -28,7 +28,7 @@ module.exports = {
         indent: [2, 4],
         'react/jsx-filename-extension': [
             2,
-            { extensions: ['.js', '.jsx', '.tsx'] },
+            {extensions: ['.js', '.jsx', '.tsx']},
         ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -41,10 +41,24 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true }],
-        'max-len': ['error', { ignoreComments: true, code: 120 }],
+        'i18next/no-literal-string': [
+            'error',
+            {
+                markupOnly: true,
+                ignoreAttributes: ['data-testid']
+            }
+        ],
+        'max-len': ['error', {ignoreComments: true, code: 120}],
     },
     globals: {
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            }
+        }
+    ]
 };
