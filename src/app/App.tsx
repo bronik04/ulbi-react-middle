@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 import './styles/index.scss';
-import { useTheme } from 'app/providers/ThemePrivider';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
@@ -13,10 +13,10 @@ function App() {
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar />
-                <main className="content-page">
+                <div className="content-page">
                     <Sidebar />
                     <AppRouter />
-                </main>
+                </div>
             </Suspense>
         </div>
     );

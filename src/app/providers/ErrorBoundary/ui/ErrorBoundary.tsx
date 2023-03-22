@@ -1,6 +1,5 @@
 import React, { ErrorInfo, ReactNode, Suspense } from 'react';
-import { withTranslation } from 'react-i18next';
-import { PageError } from 'widgets/PageError/ui/PageError';
+import { ErrorPage } from 'widgets/ErrorPage/ui/ErrorPage';
 
 interface ErrorBoundaryProps {
     children: ReactNode;
@@ -18,23 +17,24 @@ class ErrorBoundary
     }
 
     static getDerivedStateFromError(error: Error) {
-        // Обновить состояние с тем, чтобы следующий рендер показал запасной UI.
+        // Update state so the next render will show the fallback UI.
         return { hasError: true };
     }
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-        // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
+        // You can also log the error to an error reporting service
         console.log(error, errorInfo);
     }
 
     render() {
         const { hasError } = this.state;
         const { children } = this.props;
+
         if (hasError) {
-            // Можно отрендерить запасной UI произвольного вида
+            // You can render any custom fallback UI
             return (
                 <Suspense fallback="">
-                    <PageError />
+                    <ErrorPage />
                 </Suspense>
             );
         }
@@ -43,5 +43,4 @@ class ErrorBoundary
     }
 }
 
-// export default withTranslation()(ErrorBoundary);
 export default ErrorBoundary;
