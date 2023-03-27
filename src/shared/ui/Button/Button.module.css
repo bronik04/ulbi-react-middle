@@ -1,6 +1,7 @@
 .Button {
   cursor: pointer;
   color: var(--primary-color);
+  padding: 6px 15px;
 }
 
 .clear {
@@ -11,7 +12,6 @@
 }
 
 .outline {
-  padding: 10px 15px;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   background: none;
@@ -49,6 +49,18 @@
   width: var(--font-line-xl);
   height: var(--font-line-xl);
   font: var(--font-xl);
+}
+
+.size_xl {
+  font: var(--font-xl);
+}
+
+.size_l {
+  font: var(--font-l);
+}
+
+.size_m {
+  font: var(--font-m);
 }
 
 /*# sourceMappingURL=Button.module.css.map */
