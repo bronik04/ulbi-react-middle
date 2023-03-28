@@ -5,8 +5,10 @@
   bottom: 0;
   right: 0;
   z-index: -1;
-  opacity: 0;
   pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
 }
 
 .overlay {
@@ -28,6 +30,7 @@
 
 .opened {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   z-index: var(--modal-z-index);
 
