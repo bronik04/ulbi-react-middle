@@ -1,6 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import React, { ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
+import theme from '@storybook/addon-interactions/dist/ts3.9/theme';
+import { useTheme } from 'app/providers/ThemeProvider';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -14,6 +16,7 @@ export const Modal = (props: ModalProps) => {
     const {
         className, children, isOpen, onClose,
     } = props;
+    const { theme } = useTheme();
 
     const mods = {
         [cls.opened]: isOpen,
@@ -43,7 +46,7 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div className={classNames(cls.modal, mods, [className])}>
+            <div className={classNames(cls.modal, mods, [className, theme])}>
                 <div className={cls.overlay} onClick={handleClose}>
                     <div className={cls.content} onClick={handleContentClick}>
                         {children}
