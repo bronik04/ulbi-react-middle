@@ -10,12 +10,12 @@ interface LoginFormProps {
 export const LoginForm = ({ className }: LoginFormProps) => {
     const { t } = useTranslation();
     return (
-        <div className={classNames(cls.loginForm, {}, [className])}>
+        <form className={classNames(cls.loginForm, {}, [className])}>
             <input type="text" />
             <input type="text" />
-            <Button>
+            <Button className={cls.login__btn}>
                 {t('Войти')}
             </Button>
-        </div>
+        </form>
     );
 };

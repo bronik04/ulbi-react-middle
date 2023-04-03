@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import React, { ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
-import theme from '@storybook/addon-interactions/dist/ts3.9/theme';
 import { useTheme } from 'app/providers/ThemeProvider';
 import cls from './Modal.module.scss';
 
