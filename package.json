@@ -16,7 +16,8 @@
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "storybook:build": "build-storybook -c ./config/storybook"
+    "storybook:build": "build-storybook -c ./config/storybook",
+    "start:dev:server": "node ./json-server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -61,6 +62,7 @@
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "json-server": "^0.17.0",
     "loki": "^0.31.1",
     "mini-css-extract-plugin": "^2.5.3",
     "regenerator-runtime": "^0.13.9",
