@@ -48,8 +48,7 @@ select {
   --inverted-secondary-color: #0452ff;
 }
 
-.app,
-.app__modal {
+body {
   font: var(--font-m);
   color: var(--primary-color);
 }
