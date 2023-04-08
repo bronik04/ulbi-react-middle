@@ -4,7 +4,7 @@ import {
     ThemeDecorator,
 } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Text } from './Text';
+import { Text, TextTheme } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -20,6 +20,13 @@ export const Primary = Template.bind({});
 Primary.args = {
     title: 'Test title',
     text: 'Test text',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+    title: 'Test title',
+    text: 'Test text',
+    theme: TextTheme.ERROR,
 };
 
 export const onlyTitle = Template.bind({});
