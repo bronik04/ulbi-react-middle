@@ -7,6 +7,7 @@ import { memo, useCallback } from 'react';
 import {
     loginByUsername,
 } from 'entities/User/model/services/loginByUsername/loginByUsername';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
     getLoginState,
 } from '../../model/selectors/getLoginState/getLoginState';
@@ -38,8 +39,12 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
 
     return (
         <form className={classNames(cls.loginForm, {}, [className])}>
+            <Text title={t('Форма авторизации')} />
             { error && (
-                <div>{error}</div>
+                <Text
+                    text={error}
+                    theme={TextTheme.ERROR}
+                />
             )}
             <Input
                 autofocus
