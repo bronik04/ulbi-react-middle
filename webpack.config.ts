@@ -23,9 +23,5 @@ export default (env: BuildEnv) => {
         port: PORT,
     });
 
-    config.plugins.push(new DefinePlugin(
-        { __IS_DEV__: true },
-    ));
-
     return config;
 };

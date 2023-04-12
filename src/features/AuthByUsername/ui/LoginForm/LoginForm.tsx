@@ -42,7 +42,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
             <Text title={t('Форма авторизации')} />
             { error && (
                 <Text
-                    text={error}
+                    text={t('Вы ввели неверный логин или пароль')}
                     theme={TextTheme.ERROR}
                 />
             )}
