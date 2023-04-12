@@ -54,7 +54,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
-        'no-params-reassign': 'off', // Checks
+        'no-param-reassign': 'off', // Checks
     },
     globals: {
         __IS_DEV__: true,

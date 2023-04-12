@@ -68,4 +68,8 @@
   font: var(--font-m);
 }
 
+.disabled {
+  opacity: 0.5;
+}
+
 /*# sourceMappingURL=Button.module.css.map */
