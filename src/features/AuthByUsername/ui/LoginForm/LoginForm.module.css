@@ -1,0 +1,11 @@
+.loginForm {
+  display: grid;
+  row-gap: 10px;
+  width: 400px;
+}
+
+.login__btn {
+  margin-left: auto;
+}
+
+/*# sourceMappingURL=LoginForm.module.css.map */
