@@ -5,3 +5,5 @@ export interface StateSchema {
     user: UserSchema;
     loginForm?: LoginSchema,
 }
+
+export type StateSchemaKey = keyof StateSchema;
