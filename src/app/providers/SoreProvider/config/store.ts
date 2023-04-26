@@ -19,5 +19,8 @@ export function createReduxStore(initialState?: StateSchema) {
         devTools: __IS_DEV__,
     });
 
+    // @ts-ignore
+    store.reducerManager = reducerManager;
+
     return store;
 }
