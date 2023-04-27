@@ -1,6 +1,5 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
-import { loginReducer } from 'features/AuthByUsername';
 import {
     createReducerManager,
 } from 'app/providers/SoreProvider/config/reducerManager';
@@ -9,7 +8,7 @@ import { StateSchema } from './StateSchema';
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         user: userReducer,
-        loginForm: loginReducer,
+        // loginForm: loginReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

@@ -2,16 +2,17 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
-import { memo, useCallback } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { memo, useCallback, useEffect } from 'react';
 import {
     loginByUsername,
 } from 'entities/User/model/services/loginByUsername/loginByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { ReduxStoreWithManager } from 'app/providers/SoreProvider';
 import {
     getLoginState,
 } from '../../model/selectors/getLoginState/getLoginState';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
@@ -21,9 +22,22 @@ export interface LoginFormProps {
 const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const store = useStore() as ReduxStoreWithManager;
     const {
-        username, password, isLoading, error,
+        username,
+        password,
+        isLoading,
+        error,
     } = useSelector(getLoginState);
+
+    useEffect(() => {
+        store.reducerManager.add('loginForm', loginReducer);
+
+        return () => {
+            store.reducerManager.remove('loginForm');
+        };
+        // eslint-disable-next-line
+    }, []);
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
