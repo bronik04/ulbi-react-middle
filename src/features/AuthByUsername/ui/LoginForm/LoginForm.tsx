@@ -10,8 +10,18 @@ import {
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ReduxStoreWithManager } from 'app/providers/SoreProvider';
 import {
-    getLoginState,
-} from '../../model/selectors/getLoginState/getLoginState';
+    getLoginUsername,
+} from '../../model/selectors/getLoginUsername/getLoginUsername';
+import {
+    getLoginPassword,
+} from '../../model/selectors/getLoginPassword/getLoginPassword';
+import {
+    getLoginIsLoading,
+} from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import {
+    getLoginError,
+} from '../../model/selectors/getLoginError/getLoginError';
+
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
@@ -23,18 +33,17 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
-    const {
-        username,
-        password,
-        isLoading,
-        error,
-    } = useSelector(getLoginState);
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
 
     useEffect(() => {
         store.reducerManager.add('loginForm', loginReducer);
-
+        dispatch({ type: '@INIT login form reducer' });
         return () => {
             store.reducerManager.remove('loginForm');
+            dispatch({ type: '@DESTROY login form reducer' });
         };
         // eslint-disable-next-line
     }, []);
