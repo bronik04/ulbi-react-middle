@@ -32,21 +32,10 @@ export interface LoginFormProps {
 const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const store = useStore() as ReduxStoreWithManager;
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
-
-    useEffect(() => {
-        store.reducerManager.add('loginForm', loginReducer);
-        dispatch({ type: '@INIT login form reducer' });
-        return () => {
-            store.reducerManager.remove('loginForm');
-            dispatch({ type: '@DESTROY login form reducer' });
-        };
-        // eslint-disable-next-line
-    }, []);
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
