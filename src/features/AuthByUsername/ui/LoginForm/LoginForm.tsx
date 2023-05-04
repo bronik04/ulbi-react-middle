@@ -10,6 +10,9 @@ import {
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ReduxStoreWithManager } from 'app/providers/SoreProvider';
 import {
+    DynamicModuleLoader,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
     getLoginUsername,
 } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import {
@@ -50,36 +53,39 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     }, [dispatch, password, username]);
 
     return (
-        <form className={classNames(cls.loginForm, {}, [className])}>
-            <Text title={t('Форма авторизации')} />
-            { error && (
-                <Text
-                    text={t('Вы ввели неверный логин или пароль')}
-                    theme={TextTheme.ERROR}
+        // eslint-disable-next-line i18next/no-literal-string
+        <DynamicModuleLoader keyName="loginForm" reducer={loginReducer} removeAfterUnmount>
+            <form className={classNames(cls.loginForm, {}, [className])}>
+                <Text title={t('Форма авторизации')} />
+                { error && (
+                    <Text
+                        text={t('Вы ввели неверный логин или пароль')}
+                        theme={TextTheme.ERROR}
+                    />
+                )}
+                <Input
+                    autofocus
+                    type="text"
+                    placeholder={t('Введите username')}
+                    onChange={onChangeUsername}
+                    value={username}
                 />
-            )}
-            <Input
-                autofocus
-                type="text"
-                placeholder={t('Введите username')}
-                onChange={onChangeUsername}
-                value={username}
-            />
-            <Input
-                type="text"
-                placeholder={t('Введите пароль')}
-                onChange={onChangePassword}
-                value={password}
-            />
-            <Button
-                theme={ButtonTheme.OUTLINE}
-                className={cls.login__btn}
-                onClick={onLoginClick}
-                disabled={isLoading}
-            >
-                {t('Войти')}
-            </Button>
-        </form>
+                <Input
+                    type="text"
+                    placeholder={t('Введите пароль')}
+                    onChange={onChangePassword}
+                    value={password}
+                />
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    className={cls.login__btn}
+                    onClick={onLoginClick}
+                    disabled={isLoading}
+                >
+                    {t('Войти')}
+                </Button>
+            </form>
+        </DynamicModuleLoader>
     );
 });
 

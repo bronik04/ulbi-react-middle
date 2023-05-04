@@ -1,21 +1,30 @@
 import { FC, useEffect } from 'react';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { useDispatch, useStore } from 'react-redux';
 import { ReduxStoreWithManager } from 'app/providers/SoreProvider';
+import { StateSchemaKey } from 'app/providers/SoreProvider/config/StateSchema';
+import { Reducer } from '@reduxjs/toolkit';
 
-interface DynamicModuleLoaderProps {}
+interface DynamicModuleLoaderProps {
+    keyName: StateSchemaKey,
+    reducer: Reducer,
+    removeAfterUnmount?: boolean,
+}
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
-    const { children } = props;
+    const {
+        children, keyName, reducer, removeAfterUnmount,
+    } = props;
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        store.reducerManager.add('loginForm', loginReducer);
-        dispatch({ type: '@INIT login form reducer' });
+        store.reducerManager.add(keyName, reducer);
+        dispatch({ type: `@INIT ${keyName} reducer` });
         return () => {
-            store.reducerManager.remove('loginForm');
-            dispatch({ type: '@DESTROY login form reducer' });
+            if (removeAfterUnmount) {
+                store.reducerManager.remove(keyName);
+                dispatch({ type: `@DESTROY ${keyName} reducer` });
+            }
         };
         // eslint-disable-next-line
     }, []);
