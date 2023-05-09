@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import {
     loginByUsername,
-} from 'entities/User/model/services/loginByUsername/loginByUsername';
+} from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
     DynamicModuleLoader, ReducerList,
